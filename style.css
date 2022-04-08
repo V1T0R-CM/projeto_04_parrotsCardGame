@@ -38,6 +38,10 @@ h1{
     transform: rotateY(180deg);
   }
 
+.frente{
+    cursor: pointer;
+}
+
 .face {
     width: 100%;
     height: 100%;
@@ -59,4 +63,28 @@ h1{
 
 .flip .verso{
     transform: rotateY(0deg);
+}
+
+.cronometro{
+    font-family: "roboto";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(24,24,24,0.2);
+    padding: 10px;
+    border-radius: 10px;
+    position: fixed;
+    top:0;
+    right: 0;
+}
+
+@media(max-width:614px){
+    h1{
+        font-size:34px;
+        text-align: center;
+    }
+
+    .conteiner-cartas{
+        flex-direction: column;
+    }
 }

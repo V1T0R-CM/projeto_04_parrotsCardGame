@@ -1,8 +1,16 @@
-const numeroCartas=selecionaNumCartas()
+let numeroCartas
+let tempoJogo
+let idContador
 let permissao=true
-let jogadas=0
+let jogadas
 let carta1
 let carta2
+
+function cronometro(){
+    document.querySelector(".cronometro").innerHTML=tempoJogo
+    tempoJogo++
+    console.log(tempoJogo)
+}
 
 function selecionaNumCartas(){
     let numEscolhido=Number(prompt("Deseja jogar com quantas cartas?\n(4, 6, 8, 10, 12 ou 14)"))
@@ -34,7 +42,8 @@ function comparaCartas(){
     }
     permissao=true
     if (document.querySelectorAll(".flip").length===numeroCartas){
-        alert(`Parabéns você acertou todos os pares de cartas em ${jogadas} jogadas!!\n`)
+        finalizaJogo()
+        
     }
 }
 
@@ -42,6 +51,7 @@ function flipar(elemento){
     if(document.querySelectorAll(".flip").length%2===0 && permissao){
         carta1=elemento
         elemento.classList.add("flip")
+        jogadas++
     }
     else if(document.querySelectorAll(".flip").length%2!==0 && permissao){
         carta2=elemento
@@ -53,6 +63,8 @@ function flipar(elemento){
 }
 
 function inicio(){
+    jogadas=0
+    numeroCartas=selecionaNumCartas()
     let listaGifs=["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "metalparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "unicornparrot.gif"]
     listaGifs=embaralha(listaGifs)
     let gifsSorteados= listaGifs.splice(0,numeroCartas/2)
@@ -69,6 +81,23 @@ function inicio(){
             </div>
         </div>`
     }
+    tempoJogo=0
+    idContador=setInterval(cronometro,1000)
 }
+
+function finalizaJogo(){
+    clearInterval(idContador)
+    alert(`Você ganhou em ${jogadas} jogadas e ${tempoJogo} segundos de jogo!!\n`)
+    let jogarNovamente=prompt("Deseja reiniciar o jogo?\n(sim ou não)")
+    while (jogarNovamente!=="sim" && jogarNovamente!=="não"){
+        jogarNovamente=prompt("Deseja reiniciar o jogo? Digite:\n(sim ou não)")
+    }
+    if (jogarNovamente==="sim"){
+        document.querySelector(".conteiner-cartas").innerHTML=""
+        inicio()
+    }
+            
+}
+
 
 inicio()
