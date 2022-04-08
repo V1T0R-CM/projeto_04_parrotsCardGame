@@ -16,25 +16,48 @@ h1{
 
 .conteiner-cartas{
     justify-content: center;
-    max-width: 906px;
+    align-items: center;
+    width: 906px;
+    max-height: 534px;
     display: flex;
     flex-wrap: wrap;
 }
 
-
 .carta{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 16px;
-    background-color: #A7E9AF;
-    border: 1px solid #99CEA8;
-    border-radius: 5px;
+    position: relative;
     width: 117px;
     height: 146px;
+    margin: 17px;
 }
 
 .carta img{
     width: 100px;
     height: 100px;
+}
+
+.verso {
+    transform: rotateY(180deg);
+  }
+
+.face {
+    width: 100%;
+    height: 100%;
+    background-color: #a7e9af;
+    border: 1px solid #99CEA8;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all 0.5s;
+    transform-style: preserve-3d;
+  }
+
+.flip .frente{
+    transform: rotateY(-180deg);
+}
+
+.flip .verso{
+    transform: rotateY(0deg);
 }
