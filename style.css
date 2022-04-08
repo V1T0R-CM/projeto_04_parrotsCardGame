@@ -17,8 +17,7 @@ h1{
 .conteiner-cartas{
     justify-content: center;
     align-items: center;
-    width: 906px;
-    max-height: 534px;
+    max-width: 906px;
     display: flex;
     flex-wrap: wrap;
 }
