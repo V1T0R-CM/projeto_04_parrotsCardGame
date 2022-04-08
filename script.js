@@ -6,12 +6,14 @@ let jogadas
 let carta1
 let carta2
 
+//Função responsavel por cronometra o temo de jogo
 function cronometro(){
     document.querySelector(".cronometro").innerHTML=tempoJogo
     tempoJogo++
     console.log(tempoJogo)
 }
 
+//Função responsaver por definir o número de cartas do jogo
 function selecionaNumCartas(){
     let numEscolhido=Number(prompt("Deseja jogar com quantas cartas?\n(4, 6, 8, 10, 12 ou 14)"))
     while(numEscolhido>14 || numEscolhido<4 || numEscolhido%2!==0){
@@ -20,6 +22,7 @@ function selecionaNumCartas(){
     return numEscolhido
 }
 
+//Função responsavel por embaralhar as cartas
 function embaralha(lista) {
     let gifSorteado;
     let indiceSorteado;
@@ -33,6 +36,7 @@ function embaralha(lista) {
     return listaEmbaralhada;
   }
 
+//Função respnsavel por comparar os pares de cartas 
 function comparaCartas(){
     const GifCarta1=carta1.querySelector(".face.verso img")
     const GifCarta2=carta2.querySelector(".face.verso img")
@@ -47,6 +51,7 @@ function comparaCartas(){
     }
 }
 
+//Função responsavel pela flipar as cartas e fazer a contagem das jogadas
 function flipar(elemento){
     if(document.querySelectorAll(".flip").length%2===0 && permissao){
         carta1=elemento
@@ -62,6 +67,7 @@ function flipar(elemento){
     }
 }
 
+//Função responsavel por iniciar o jogo
 function inicio(){
     jogadas=0
     numeroCartas=selecionaNumCartas()
@@ -85,6 +91,7 @@ function inicio(){
     idContador=setInterval(cronometro,1000)
 }
 
+//Função responsavel pelas ações pos jogo
 function finalizaJogo(){
     clearInterval(idContador)
     alert(`Você ganhou em ${jogadas} jogadas e ${tempoJogo} segundos de jogo!!\n`)

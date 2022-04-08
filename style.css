@@ -42,6 +42,12 @@ h1{
     cursor: pointer;
 }
 
+.frente:hover{
+    transform: translate(0px,-7px);
+    transition: all 0.2s;
+    box-shadow: 5px 5px rgba(24,24,24,0.1);
+}
+
 .face {
     width: 100%;
     height: 100%;
