@@ -10,7 +10,6 @@ let carta2
 function cronometro(){
     document.querySelector(".cronometro").innerHTML=tempoJogo
     tempoJogo++
-    console.log(tempoJogo)
 }
 
 //Função responsaver por definir o número de cartas do jogo
@@ -53,17 +52,18 @@ function comparaCartas(){
 
 //Função responsavel pela flipar as cartas e fazer a contagem das jogadas
 function flipar(elemento){
+    if (!elemento.classList.contains("flip") && permissao){
+        jogadas++
+    }
     if(document.querySelectorAll(".flip").length%2===0 && permissao){
         carta1=elemento
         elemento.classList.add("flip")
-        jogadas++
     }
     else if(document.querySelectorAll(".flip").length%2!==0 && permissao){
         carta2=elemento
         elemento.classList.add("flip")
         setTimeout(comparaCartas,1000)
         permissao=false
-        jogadas++
     }
 }
 
